@@ -1,0 +1,33 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+       - id: "${JENKINS_ADMIN_ID}"
+         password: "${JENKINS_ADMIN_PASSWORD}"
+       - id: "dev"
+         password: "dev"
+
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+        - "Job/Build:dev"
+        - "Job/Cancel:dev"
+        - "Job/Read:dev"
+        - "Job/Workspace:dev"
+#        - "Run/Replay:dev"
+#        - "Run/Update:dev"
+
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true 
+
+  remotingSecurity:
+    enabled: true    
+
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json"
