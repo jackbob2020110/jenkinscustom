@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.466-jdk17
+FROM jenkins/jenkins:2.486-jdk17
 USER root
 ENV JENKINS_HOME /var/jenkins_home
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
